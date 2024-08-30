@@ -1,3 +1,15 @@
+# ADDING A SUMMARY OF THE APPROACH SO I CAN EXPLAIN THIS CODE LATER AND NOT FEEL STUPID
+# 1) Input Parsing: parse input, extract list of individual seed number and the various conversion maps (seed-to-soil, soil-to-fertilizer) This time parse the seed input as ranges (start and length) instead of individual numbers
+# 2) Range Optimization: For each conversion map, optimize ranges by sorting them and converting them into a format that's easier to work with:(source start, source end, offset)
+# 3) Range Mapping: instead of mapping individual vals, we now have a functiona that rakes a range of numbers and a conversion map, and output a set of new ranges after applying the mapping: This function:
+#    - Split the inpoout range if it overlaps partially with a conversion range
+#    - Apply the offset to the parts of the range that fall within a conversion range
+#    - Keep parts of the range that don't fall into any conversion range unchanged
+# 4) Find lowest location: start with intitial seed ranges; for each coversion map:
+#    - Apply range mapping function to each current range
+#    - This gives us a new set of ranges, which become our current ranges for the next conversion map
+#    - Repeat this process through all conversion maps
+# 5) After applying all conversion maps, we look at the start of each of our final ranges. THe lowest of these start values is the right answer. 
 import sys
 from typing import List, Tuple
 
