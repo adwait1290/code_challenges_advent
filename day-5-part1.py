@@ -1,3 +1,11 @@
+# ADDING A SUMMARY OF APPROACH SO I CAN EXPLAIN THIS CODE LATER AND NOT FEEL STUPID
+# 1) Input Parsing: parse input, extract list of individual seed number and the various conversion maps (seed-to-soil, soil-to-fertilizer)
+# 2) Range Optimization: For each conversion map, optimize ranges by sorting them and converting them into a format that's easier to work with:(source start, source end, offset)
+# 3) Binary Search: BS search function to quickly and most efficidently find which range a particular number falls into within a conversion map. Better than checking one by one
+# 4) Value Mapping: Create function that takes a value and a set of ranges, uses the BS to find the appropiate range and then applies the mapping if a range is found.
+# 5) Iterate through each seed number, For each seed, we apply all conversion maps in sequence(seed-to-soil then soil-to-fertilizer) using our value mapping function. Keep track of the lowest final value we've seen. 
+
+
 import sys
 from typing import List, Tuple
 from collections import deque
